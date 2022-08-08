@@ -38,6 +38,8 @@ RSpec.describe 'Plots Index Page', type: :feature do
     PlotPlant.create!(plot_id: plot_3.id, plant_id: pineapple.id)
     PlotPlant.create!(plot_id: plot_3.id, plant_id: onion.id)
 
+    visit plots_path
+
     within('#plot-0') do 
       expect(page).to have_content('Plot Number: 1')
       expect(page).to_not have_content('Plot Number: 2')
