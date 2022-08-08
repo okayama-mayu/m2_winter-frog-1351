@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Plant do
+RSpec.describe PlotPlant do
   describe 'relationships' do
     it { should belong_to :plot }
     it { should belong_to :plant }
