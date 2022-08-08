@@ -73,4 +73,79 @@ RSpec.describe 'Plots Index Page', type: :feature do
       end
     end
   end
+
+  # User Story 2, Remove a Plant from a Plot
+  # As a visitor
+  # When I visit a plot's index page
+  # Next to each plant's name
+  # I see a link to remove that plant from that plot
+  it 'has links to remove the plan from the plot' do 
+    # garden
+    garden = Garden.create!(name: 'Community Garden', organic: false)
+
+    # plots 
+    plot_1 = garden.plots.create!(number: 1, size: "medium", direction: "east")
+
+    plot_2 = garden.plots.create!(number: 2, size: "medium", direction: "east")
+
+    plot_3 = garden.plots.create!(number: 3, size: "medium", direction: "east")
+
+    # plants 
+    purple = Plant.create!(name: 'Purple Beauty Sweet Bell Pepper', description: 'likes sun', days_to_harvest: 10)
+
+    crepe = Plant.create!(name: 'Crepe Myrtle', description: 'likes rain', days_to_harvest: 50)
+    
+    pineapple = Plant.create!(name: 'Pineapple', description: 'sweet', days_to_harvest: 15)
+
+    onion = Plant.create!(name: 'Onion', description: 'peels', days_to_harvest: 30)
+
+    # plot plants (Plot 1)
+    PlotPlant.create!(plot_id: plot_1.id, plant_id: purple.id)
+    PlotPlant.create!(plot_id: plot_1.id, plant_id: pineapple.id)
+
+    # plot plants (Plot 2)
+    PlotPlant.create!(plot_id: plot_2.id, plant_id: crepe.id)
+    PlotPlant.create!(plot_id: plot_2.id, plant_id: pineapple.id)
+    
+    # plot plants (Plot 3)
+    PlotPlant.create!(plot_id: plot_3.id, plant_id: pineapple.id)
+    PlotPlant.create!(plot_id: plot_3.id, plant_id: onion.id)
+
+    visit plots_path
+
+    within('#plot-0') do 
+      within('#plot-plants-0-plant-0') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+
+      within('#plot-plants-0-plant-1') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+    end
+    
+    within('#plot-1') do
+      within('#plot-plants-1-plant-0') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+      
+      within('#plot-plants-1-plant-1') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+    end 
+
+    within('#plot-2') do
+      within('#plot-plants-2-plant-0') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+
+      within('#plot-plants-2-plant-1') do 
+        expect(page).to have_link('Remove Plant from Plot', count: 1)
+      end
+    end
+  end
+
+  # When I click on that link
+  # I'm returned to the plots index page
+  # And I no longer see that plant listed under that plot
+  # (Note: you should not destroy the plant record entirely)
 end
