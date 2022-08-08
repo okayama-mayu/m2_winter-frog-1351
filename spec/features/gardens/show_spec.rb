@@ -29,11 +29,11 @@ RSpec.describe 'Gardens Show Page', type: :feature do
 
     # plot plants (Plot 1)
     PlotPlant.create!(plot_id: plot_1.id, plant_id: purple.id)
-    PlotPlant.create!(plot_id: plot_1.id, plant_id: pineapple.id)
+    PlotPlant.create!(plot_id: plot_1.id, plant_id: crepe.id)
 
     # plot plants (Plot 2)
     PlotPlant.create!(plot_id: plot_2.id, plant_id: crepe.id)
-    PlotPlant.create!(plot_id: plot_2.id, plant_id: pineapple.id)
+    PlotPlant.create!(plot_id: plot_2.id, plant_id: onion.id)
     
     # plot plants (Plot 3)
     PlotPlant.create!(plot_id: plot_3.id, plant_id: pineapple.id)
