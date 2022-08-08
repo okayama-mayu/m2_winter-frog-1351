@@ -7,7 +7,7 @@
     <div id="plot-plants-<%=index%>">
       <% plot.plants.each_with_index do |plant, index2| %>
         <div id="plot-plants-<%=index%>-plant-<%=index2%>">
-          <li><%= plant.name %> <%= link_to 'Remove Plant from Plot', plot_path(plant.id), method: :delete %><br></li>          
+          <li><%= plant.name %> <%= link_to 'Remove Plant from Plot', plot_plant_path(plant.plot_plants.find { |plot_plant| plot_plant.plot_id == plot.id }), method: :delete %><br></li>          
         </div>
       <% end %>
     </div>
