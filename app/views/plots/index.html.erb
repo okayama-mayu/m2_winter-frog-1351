@@ -5,10 +5,9 @@
     Plot Number: <%= plot.number %>
     <ul>
     <div id="plot-plants-<%=index%>">
-      <% plot.plants.each do |plant| %>
-        <div id="plot-plants-<%=index%>">
-          <li><%= plant.name %><br></li>
-          <<%= link_to 'Remove Plant from Plot', plot_path, method: :remove %>>
+      <% plot.plants.each_with_index do |plant, index2| %>
+        <div id="plot-plants-<%=index%>-plant-<%=index2%>">
+          <li><%= plant.name %> <%= link_to 'Remove Plant from Plot', plot_path(plant.id), method: :delete %><br></li>          
         </div>
       <% end %>
     </div>

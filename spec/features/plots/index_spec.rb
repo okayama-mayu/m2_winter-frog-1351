@@ -112,6 +112,7 @@ RSpec.describe 'Plots Index Page', type: :feature do
     PlotPlant.create!(plot_id: plot_3.id, plant_id: onion.id)
 
     visit plots_path
+    save_and_open_page
 
     within('#plot-0') do 
       within('#plot-plants-0-plant-0') do 
