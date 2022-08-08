@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :plots, only: [:index, :destroy]
 
   resources :plot_plants, only: [:destroy]
+
+  resources :gardens, only: [:show]
 end
