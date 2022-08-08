@@ -99,5 +99,7 @@ RSpec.describe 'Gardens Show Page', type: :feature do
     within('#plant-2') do 
       expect(page).to have_content(onion.name)
     end
+
+    expect(page).to_not have_content(purple.name)
   end
 end
