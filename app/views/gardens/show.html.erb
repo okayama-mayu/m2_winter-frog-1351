@@ -1,0 +1,6 @@
+<h1>Garden Name: <%= @garden.name %></h1>
+
+<h3>Plants in the Garden</h3>
+<% @garden.plants_within_100.each do |plant| %>
+  <%= plant.name %><br>
+<% end %>
